@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotLastFm", "dotLastFm\dotLastFm.csproj", "{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CE785B16-F90C-477F-91EE-9724CAD85F23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotLastFm.IntegrationTests", "Tests\dotLastFm.IntegrationTests\dotLastFm.IntegrationTests.csproj", "{095B1F8B-0F86-4173-A76D-89EB27AA00F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{095B1F8B-0F86-4173-A76D-89EB27AA00F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{095B1F8B-0F86-4173-A76D-89EB27AA00F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{095B1F8B-0F86-4173-A76D-89EB27AA00F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{095B1F8B-0F86-4173-A76D-89EB27AA00F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{095B1F8B-0F86-4173-A76D-89EB27AA00F2} = {CE785B16-F90C-477F-91EE-9724CAD85F23}
+	EndGlobalSection
+EndGlobal

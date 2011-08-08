@@ -1,0 +1,1 @@
+powershell ./psake.ps1 ./default.ps1

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotLastFm</RootNamespace>
+    <AssemblyName>dotLastFm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\lib\RestSharp\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\AlbumApi.cs" />
+    <Compile Include="Api\ArtistApi.cs" />
+    <Compile Include="Api\IAlbumApi.cs" />
+    <Compile Include="Api\IArtistApi.cs" />
+    <Compile Include="Api\ITagApi.cs" />
+    <Compile Include="Api\Rest\FluentRestWrapper.cs" />
+    <Compile Include="Api\ILastFmConfig.cs" />
+    <Compile Include="Api\ILastFmApi.cs" />
+    <Compile Include="Api\ITrackApi.cs" />
+    <Compile Include="Api\LastFmApiBase.cs" />
+    <Compile Include="Api\Rest\LastFmApiException.cs" />
+    <Compile Include="Api\Rest\RestWrapper.cs" />
+    <Compile Include="Api\Rest\RestWrapperExtension.cs" />
+    <Compile Include="Api\TagApi.cs" />
+    <Compile Include="Api\TrackApi.cs" />
+    <Compile Include="LastFmApi.cs" />
+    <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\AlbumTrack.cs" />
+    <Compile Include="Models\AlbumWithDetails.cs" />
+    <Compile Include="Models\ArtistSimilarArtist.cs" />
+    <Compile Include="Models\ArtistWithDetails.cs" />
+    <Compile Include="Models\Stats.cs" />
+    <Compile Include="Models\TagTopAlbum.cs" />
+    <Compile Include="Models\TagTopArtist.cs" />
+    <Compile Include="Models\TagTopTrack.cs" />
+    <Compile Include="Models\TagWithDetails.cs" />
+    <Compile Include="Models\TrackAlbum.cs" />
+    <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\ImageSize.cs" />
+    <Compile Include="Models\LastFmError.cs" />
+    <Compile Include="Models\LastFmResponse.cs" />
+    <Compile Include="Models\StreamableFlag.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\TopTag.cs" />
+    <Compile Include="Models\TrackSimilar.cs" />
+    <Compile Include="Models\Wrappers\AlbumWithDetailsWrapper.cs" />
+    <Compile Include="Models\Wrappers\ArtistWithDetailsWrapper.cs" />
+    <Compile Include="Models\Wrappers\TagSimilarWrapper.cs" />
+    <Compile Include="Models\Wrappers\TagTopAlbumWrapper.cs" />
+    <Compile Include="Models\Wrappers\TagTopArtistWrapper.cs" />
+    <Compile Include="Models\Wrappers\TagTopTracksWrapper.cs" />
+    <Compile Include="Models\Wrappers\TagWithDetailsWrapper.cs" />
+    <Compile Include="Models\Wrappers\TopTagListWrapper.cs" />
+    <Compile Include="Models\Track.cs" />
+    <Compile Include="Models\TrackWithDetails.cs" />
+    <Compile Include="Models\Wiki.cs" />
+    <Compile Include="Models\Wrappers\TrackSimilarWrapper.cs" />
+    <Compile Include="Models\Wrappers\TrackWithDetailsWrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(ProgramFiles)\MSBuild\StyleCop\v4.5\StyleCop.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
