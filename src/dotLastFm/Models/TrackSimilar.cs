@@ -69,7 +69,7 @@ namespace DotLastFm.Models
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0} - {1}", this.Artist.Name, this.Name);
+            return string.Format("{0} - {1}", Artist.Name, Name);
         }
     }
 }

@@ -6,7 +6,7 @@
 
 namespace DotLastFm.Api
 {
-    using DotLastFm.Api.Rest;
+    using Rest;
 
     /// <summary>
     /// Base class for connecting to Last.fm API
@@ -19,8 +19,8 @@ namespace DotLastFm.Api
         /// <param name="api">The session.</param>
         protected LastFmApiBase(ILastFmApi api)
         {
-            this.Api = api;
-            this.Rest = new RestWrapper(this.Api.Config);
+            Api = api;
+            Rest = new RestWrapper(Api.Config);
         }
 
         /// <summary>

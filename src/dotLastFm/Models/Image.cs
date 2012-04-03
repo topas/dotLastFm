@@ -46,7 +46,7 @@ namespace DotLastFm.Models
         /// </returns>
         public override string ToString()
         {
-            return this.Value;
+            return Value;
         }
     }
 }

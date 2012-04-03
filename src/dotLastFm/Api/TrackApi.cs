@@ -7,10 +7,9 @@
 namespace DotLastFm.Api
 {
     using System.Collections.Generic;
-
-    using DotLastFm.Api.Rest;
-    using DotLastFm.Models;
-    using DotLastFm.Models.Wrappers;
+    using Models;
+    using Models.Wrappers;
+    using Rest;
 
     /// <summary>
     /// Last.fm track API
@@ -62,7 +61,7 @@ namespace DotLastFm.Api
         /// </returns>
         public IEnumerable<TopTag> GetTopTags(string artist, string track)
         {
-            return this.GetTopTags(artist, track, false);
+            return GetTopTags(artist, track, false);
         }
 
         /// <summary>
@@ -107,7 +106,7 @@ namespace DotLastFm.Api
         /// </returns>
         public TrackWithDetails GetInfo(string artist, string track)
         {
-            return this.GetInfo(artist, track, false, null);
+            return GetInfo(artist, track, false, null);
         }
 
         /// <summary>
@@ -152,7 +151,7 @@ namespace DotLastFm.Api
         /// </returns>
         public IEnumerable<TrackSimilar> GetSimilar(string artist, string track)
         {
-            return this.GetSimilar(artist, track, false, 0);
+            return GetSimilar(artist, track, false, 0);
         }
     }
 }

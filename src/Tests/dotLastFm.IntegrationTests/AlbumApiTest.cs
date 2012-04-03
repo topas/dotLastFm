@@ -20,7 +20,7 @@ namespace DotLastFm.IntegrationTests
         /// </summary>
         public AlbumApiTest()
         {
-            this.Api = new LastFmApi(new TestLastFmConfig());
+            Api = new LastFmApi(new TestLastFmConfig());
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace DotLastFm.IntegrationTests
         {
             const string artist = "Moby";
             const string albumName = "Play";
-            var album = this.Api.Album.GetInfo(albumName, artist);
+            var album = Api.Album.GetInfo(albumName, artist);
             Assert.NotNull(album);
             Assert.Equal(albumName, album.Name);
             Assert.NotNull(album.Tracks);
@@ -58,9 +58,9 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void AlbumGetTopTags()
         {
-            var list = this.Api.Album.GetTopTags("Moby", "Play");
+            var list = Api.Album.GetTopTags("Moby", "Play");
             Assert.NotNull(list);
-            Assert.True(list.Count() > 0);
+            Assert.True(list.Any());
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DotLastFm.Api
 {
     using System.Collections.Generic;
 
-    using DotLastFm.Models;
+    using Models;
 
     /// <summary>
     /// Last.fm artist API

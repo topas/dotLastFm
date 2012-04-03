@@ -27,6 +27,7 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-build/
+artefacts/
 release/
 StyleCop.Cache
+src/packages/*

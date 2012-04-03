@@ -6,7 +6,7 @@
 
 namespace DotLastFm
 {
-    using DotLastFm.Api;
+    using Api;
 
     /// <summary>
     /// Last.fm API sesspis
@@ -19,12 +19,12 @@ namespace DotLastFm
         /// <param name="config">The config.</param>
         public LastFmApi(ILastFmConfig config)
         {
-            this.Config = config;
+            Config = config;
 
-            this.Track = new TrackApi(this);
-            this.Tag = new TagApi(this);
-            this.Album = new AlbumApi(this);
-            this.Artist = new ArtistApi(this);
+            Track = new TrackApi(this);
+            Tag = new TagApi(this);
+            Album = new AlbumApi(this);
+            Artist = new ArtistApi(this);
         }
 
         /// <summary>

@@ -6,7 +6,7 @@
 
 namespace DotLastFm.IntegrationTests
 {
-    using DotLastFm.Api;
+    using Api;
 
     /// <summary>
     /// DotLastFm's config for testing

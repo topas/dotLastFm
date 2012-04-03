@@ -43,7 +43,7 @@ namespace DotLastFm.Models
         /// </returns>
         public override string ToString()
         {
-            return this.Name;
+            return Name;
         }
     }
 }

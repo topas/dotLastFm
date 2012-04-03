@@ -6,8 +6,9 @@
 
 namespace DotLastFm.Api.Rest
 {
+    using System;
     using System.Net;
-    using DotLastFm.Models;
+    using Models;
     using RestSharp;
     using RestSharp.Deserializers;
 
@@ -42,15 +43,15 @@ namespace DotLastFm.Api.Rest
         {
             get
             {
-                if (this.client == null)
+                if (client == null)
                 {
-                    this.client = new RestClient(this.config.BaseUrl);
-                    this.client.ClearHandlers();
-                    this.client.AddHandler("*", new XmlAttributeDeserializer());
-                    this.client.AddDefaultParameter("api_key", this.config.ApiKey, ParameterType.GetOrPost); 
+                    client = new RestClient(config.BaseUrl);
+                    client.ClearHandlers();
+                    client.AddHandler("*", new XmlAttributeDeserializer());
+                    client.AddDefaultParameter("api_key", config.ApiKey, ParameterType.GetOrPost); 
                 }
 
-                return this.client;
+                return client;
             }
         }
 
@@ -71,7 +72,7 @@ namespace DotLastFm.Api.Rest
                 request.AddParameter(p);
             }
 
-            var response = this.Client.Execute<LastFmResponse<TModel>>(request);
+            var response = Client.Execute<LastFmResponse<TModel>>(request);
 
             if (response.Data != null && response.Data.Status != "ok")
             {
@@ -81,6 +82,11 @@ namespace DotLastFm.Api.Rest
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new WebException(string.Format("Last.fm has returned {0} HTTP error.", (int)response.StatusCode));
+            }
+
+            if (response.Data == null)
+            {
+                throw new InvalidOperationException("Response cannot get data.");
             }
 
             return response.Data.Value;

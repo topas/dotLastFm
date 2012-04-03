@@ -6,10 +6,6 @@
 
 namespace DotLastFm.Models.Wrappers
 {
-    using System.Collections.Generic;
-
-    using RestSharp.Deserializers;
-
     /// <summary>
     /// Album with details wrapper
     /// </summary>

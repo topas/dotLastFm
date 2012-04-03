@@ -19,7 +19,7 @@ namespace DotLastFm.IntegrationTests
         /// </summary>
         public TagApiTest()
         {
-            this.Api = new LastFmApi(new TestLastFmConfig());
+            Api = new LastFmApi(new TestLastFmConfig());
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void TagGetTopArtists()
         {
-            var list = this.Api.Tag.GetTopArtists("pop");
+            var list = Api.Tag.GetTopArtists("pop");
             Assert.NotNull(list);
-            Assert.True(list.Count() > 0);
+            Assert.True(list.Any());
         }
 
         /// <summary>
@@ -51,9 +51,9 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void TagGetTopAlbums()
         {
-            var list = this.Api.Tag.GetTopAlbums("pop");
+            var list = Api.Tag.GetTopAlbums("pop");
             Assert.NotNull(list);
-            Assert.True(list.Count() > 0);
+            Assert.True(list.Any());
         }
 
         /// <summary>
@@ -62,9 +62,9 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void TagGetTopTracks()
         {
-            var list = this.Api.Tag.GetTopTracks("pop");
+            var list = Api.Tag.GetTopTracks("pop");
             Assert.NotNull(list);
-            Assert.True(list.Count() > 0);
+            Assert.True(list.Any());
         }
 
         /// <summary>
@@ -73,9 +73,9 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void TagGetTopTags()
         {
-            var list = this.Api.Tag.GetTopTags();
+            var list = Api.Tag.GetTopTags();
             Assert.NotNull(list);
-            Assert.True(list.Count() > 0);
+            Assert.True(list.Any());
         }
 
         /// <summary>
@@ -84,9 +84,9 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void TagGetSimilar()
         {
-            var list = this.Api.Tag.GetSimilar("pop");
+            var list = Api.Tag.GetSimilar("pop");
             Assert.NotNull(list);
-            Assert.True(list.Count() > 0);
+            Assert.True(list.Any());
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void TagGetInfo()
         {
-            var list = this.Api.Tag.GetInfo("pop");
+            var list = Api.Tag.GetInfo("pop");
             Assert.NotNull(list);
             Assert.NotNull(list.Wiki);
             Assert.NotNull(list.Name);

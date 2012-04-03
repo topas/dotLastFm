@@ -7,10 +7,10 @@
 namespace DotLastFm.IntegrationTests
 {
     using System.Net;
-    using DotLastFm.Api;
-    using DotLastFm.Api.Rest;
-    using DotLastFm.Models.Wrappers;
-    using Moq;
+    using Api;
+    using Api.Rest;
+    using Models.Wrappers;
+    using NSubstitute;
     using Xunit;
 
     /// <summary>
@@ -23,7 +23,7 @@ namespace DotLastFm.IntegrationTests
         /// </summary>
         public RestWrapperTest()
         {
-            this.Wrapper = new RestWrapper(new TestLastFmConfig());
+            Wrapper = new RestWrapper(new TestLastFmConfig());
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void RestSuccessCall()
         {
-            var result = this.Wrapper.Method("track.getTopTags")
+            var result = Wrapper.Method("track.getTopTags")
                             .AddParam("artist", "Moby")
                             .AddParam("track", "Porcelain")
                             .AddParam("autocorrect", "0").Execute<TopTagListWrapper>();
@@ -60,7 +60,7 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void RestLastFmException()
         {
-            Assert.Throws<LastFmApiException>(() => this.Wrapper.Method("track.non-existing-method").Execute<TopTagListWrapper>());
+            Assert.Throws<LastFmApiException>(() => Wrapper.Method("track.non-existing-method").Execute<TopTagListWrapper>());
         }
 
         /// <summary>
@@ -69,12 +69,12 @@ namespace DotLastFm.IntegrationTests
         [Fact]
         public void RestWebException()
         {
-            var configMock = new Mock<ILastFmConfig>();
-            configMock.Setup(a => a.BaseUrl).Returns("http://blablainvalidtotalerrorurl.last.fm");
-            configMock.Setup(a => a.ApiKey).Returns("somekey");
-            configMock.Setup(a => a.Secret).Returns("somesecret");
+            var config = Substitute.For<ILastFmConfig>();
+            config.BaseUrl.Returns("http://blablainvalidtotalerrorurl.last.fm");
+            config.ApiKey.Returns("somekey");
+            config.Secret.Returns("somesecret");
 
-            var w = new RestWrapper(configMock.Object);
+            var w = new RestWrapper(config);
 
             Assert.Throws<WebException>(() => w.Method("track.getTopTags").Execute<TopTagListWrapper>());
         }
