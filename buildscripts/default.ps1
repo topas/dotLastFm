@@ -3,7 +3,7 @@ $framework = '4.0'
 properties { 
     $scripts_dir = Split-Path $psake.build_script_file
     $build_dir = $scripts_dir | Split-Path
-    $build_output = "$build_dir\artefacts\"
+    $build_output = "$build_dir\artifacts\"
     $release_output = "$build_dir\release\bin\"
 	$nuget_output = "$build_dir\release\nuget\"
     $code_dir = "$build_dir\src"
