@@ -31,7 +31,7 @@ namespace DotLastFm.IntegrationTests
         {
             get
             {
-                return "b25b959554ed76058ac220b7b2e0a026";
+                return "ae66f34b0428ef4cf946b522e6a83776";
             }
         }
 

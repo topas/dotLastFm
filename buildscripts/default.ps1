@@ -1,15 +1,12 @@
-$framework = '4.0'
-
-properties { 
+properties {
     $scripts_dir = Split-Path $psake.build_script_file
     $build_dir = $scripts_dir | Split-Path
     $build_output = "$build_dir\artifacts\"
     $release_output = "$build_dir\release\bin\"
-	$nuget_output = "$build_dir\release\nuget\"
+    $nuget_output = "$build_dir\release\nuget\"
     $code_dir = "$build_dir\src"
-	$xunit_lib = "$build_dir\src\packages\xunit.1.9.0.1566\lib\"
-    $xunit_runners = "$build_dir\src\packages\xunit.runners.1.9.0.1566\tools\"
-	$nuget_tool = "$build_dir\src\.nuget\NuGet.exe"
+    $xunit_lib = "$build_dir\src\packages\xunit.1.9.1\lib\net20"    
+    $nuget_tool = "$build_dir\src\.nuget\NuGet.exe"
 }
 
 include .\psake_ext.ps1
@@ -21,32 +18,34 @@ task Release -depends Test {
 
     cp $build_output\dotLastFm.dll $release_output
     cp $build_output\RestSharp.dll $release_output
-	cp $build_output\Newtonsoft.Json.dll $release_output
 }
 
 task Nuget -depends Test {
     Write-Host "Creating nuget package..." -ForegroundColor Green
-	
-	$lib = "$nuget_output\lib\Net40" 
-	mkdir $lib | out-null
+    
+    $lib = "$nuget_output\lib\Net40" 
+    mkdir $lib | out-null
     cp $build_output\dotLastFm.dll $lib
-	$version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("$build_output\dotLastFm.dll").FileVersion;
+    $version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo("$build_output\dotLastFm.dll").FileVersion;
     Write-Host "Version: $version"
-	Generate-NuSpecFile -file "$nuget_output\dotLastFm.nuspec" -version "$version"
-	$old = pwd
-	cd $nuget_output
-	Exec { &"$nuget_tool" pack dotLastFm.nuspec }
-	cd $old	
+    Generate-NuSpecFile -file "$nuget_output\dotLastFm.nuspec" -version "$version"
+    $old = pwd
+    cd $nuget_output
+    Exec { &"$nuget_tool" pack dotLastFm.nuspec }
+    cd $old 
 }
 
 task Test -depends Compile, Clean { 
     Write-Host "Testing..." -ForegroundColor Green
     
     $old = pwd
-    cd $xunit_lib
-    cp $xunit_lib\Xunit.dll $build_output
-    Exec { &"$xunit_runners\xunit.console.clr4.exe" "$build_output\dotLastFm.IntegrationTests.dll" }
-    cd $old	
+
+    cp $xunit_lib\* $build_output
+    cp $scripts_dir\integrationtests.msbuild $build_output 
+    cd $build_output 
+    Exec { msbuild integrationtests.msbuild }
+
+    cd $old 
 }
 
 task Compile -depends Clean { 
@@ -70,11 +69,11 @@ task Clean {
     }
     mkdir $release_output | out-null
     
-	if (Test-Path $nuget_output) 
+    if (Test-Path $nuget_output) 
     {
         rd $nuget_output -rec -force | out-null
     }
     mkdir $nuget_output | out-null
-	
+    
     Exec { msbuild "$code_dir\dotLastFm.sln" /t:Clean /p:Configuration=Release /v:quiet }
 }
