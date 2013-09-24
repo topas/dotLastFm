@@ -19,7 +19,7 @@ namespace DotLastFm.Models
         /// <value>
         /// The published date.
         /// </value>
-        public DateTime Published
+        public DateTime? Published
         {
             get;
             set;

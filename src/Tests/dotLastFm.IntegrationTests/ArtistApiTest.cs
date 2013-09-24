@@ -47,7 +47,30 @@ namespace DotLastFm.IntegrationTests
             Assert.Equal(artistName, artist.Name);
             Assert.NotNull(artist.Tags);
             Assert.NotNull(artist.Stats);
+            Assert.NotNull(artist.MbId);
             Assert.NotNull(artist.SimilarArtists);
+            Assert.NotNull(artist.Bio);
+            Assert.NotNull(artist.Bio.Published);
+            Assert.True(artist.SimilarArtists.Count > 0);
+            Assert.NotNull(artist.Streamable);
+        }
+
+        /// <summary>
+        /// Artist.getInfo method.
+        /// </summary>
+        [Fact]
+        public void ArtistGetInfoWithEmptyPublishedDate()
+        {
+            const string artistName = "Зимавсегда";
+            var artist = Api.Artist.GetInfo(artistName);
+            Assert.NotNull(artist);
+            Assert.Equal(artistName, artist.Name);
+            Assert.NotNull(artist.Tags);
+            Assert.NotNull(artist.Stats);
+            Assert.NotNull(artist.MbId);
+            Assert.NotNull(artist.SimilarArtists);
+            Assert.NotNull(artist.Bio);
+            Assert.Null(artist.Bio.Published);
             Assert.True(artist.SimilarArtists.Count > 0);
             Assert.NotNull(artist.Streamable);
         }
