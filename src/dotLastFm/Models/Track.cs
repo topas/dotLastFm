@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace DotLastFm.Models
 {
     using RestSharp.Deserializers;
@@ -31,7 +33,7 @@ namespace DotLastFm.Models
         /// <value>
         /// The duration.
         /// </value>
-        public int Duration
+        public TimeSpan? Duration
         {
             get;
             set;

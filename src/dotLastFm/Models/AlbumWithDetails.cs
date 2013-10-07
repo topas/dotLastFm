@@ -59,7 +59,7 @@ namespace DotLastFm.Models
         /// <value>
         /// The release date.
         /// </value>
-        public DateTime ReleaseDate
+        public DateTime? ReleaseDate
         {
             get;
             set;

@@ -5,7 +5,7 @@ properties {
     $release_output = "$build_dir\release\bin\"
     $nuget_output = "$build_dir\release\nuget\"
     $code_dir = "$build_dir\src"
-    $xunit_lib = "$build_dir\src\packages\xunit.1.9.1\lib\net20"    
+    $xunit_lib = "$build_dir\src\packages\xunit.1.9.2\lib\net20"    
     $nuget_tool = "$build_dir\src\.nuget\NuGet.exe"
 }
 

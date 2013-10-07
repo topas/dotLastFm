@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace DotLastFm.IntegrationTests
 {
     using System.Linq;
@@ -50,6 +52,11 @@ namespace DotLastFm.IntegrationTests
             Assert.Equal(artist, album.ArtistName);
             Assert.NotNull(album.Tags);
             Assert.NotNull(album.Wiki);
+            Assert.NotNull(album.ReleaseDate);
+            Assert.NotNull(album.Wiki.Published);
+
+            var track = album.Tracks.First(a => a.Name == "Porcelain");
+            Assert.Equal(new TimeSpan(0, 3, 29), track.Duration);
         }
 
         /// <summary>
@@ -61,6 +68,24 @@ namespace DotLastFm.IntegrationTests
             var list = Api.Album.GetTopTags("Moby", "Play");
             Assert.NotNull(list);
             Assert.True(list.Any());
+        }
+
+        /// <summary>
+        /// Album.getInfo method.
+        /// </summary>
+        [Fact]
+        public void AlbumGetInfoWithOptionalItems()
+        {
+            const string artist = "Howie Day";
+            const string albumName = "White EP";
+            var album = Api.Album.GetInfo(albumName, artist);
+            Assert.NotNull(album);
+            Assert.Equal(albumName, album.Name);
+            Assert.NotNull(album.Tracks);
+            Assert.Equal(artist, album.ArtistName);
+            Assert.NotNull(album.Tags);
+            Assert.Null(album.Wiki);
+            Assert.NotNull(album.ReleaseDate);
         }
     }
 }
